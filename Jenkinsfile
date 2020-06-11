@@ -15,7 +15,7 @@ pipeline{
         stage('Image Build And Publish'){
           steps{
               container("kaniko") {
-                  sh "/kaniko/executor -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=registry-vpc.cn-hongkong.aliyuncs.com/haoshuwei24/test"
+                  sh "/kaniko/executor -f `pwd`/Dockerfile -c `pwd`  --skip-tls-verify  --destination=registry-vpc.cn-hongkong.aliyuncs.com/haoshuwei24/test:v1"
               }
           }
         }
