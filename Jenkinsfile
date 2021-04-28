@@ -44,10 +44,10 @@ pipeline{
         // 添加第四个stage, 部署应用到指定k8s集群
         stage('Deploy to Kubernetes') {
           steps {
-            container('kubectl') {
-			  sh "sed -i  's#IMAGE#${IMAGE}#g' application-demo.yaml"
-			  sh "kubectl apply -f  application-demo.yaml"
-            }
+              container('kubectl') {
+                  sh "sed -i  's#IMAGE#${IMAGE}#g' application-demo.yaml"
+                  sh "kubectl apply -f  application-demo.yaml"
+              }
           }
         }
       }
