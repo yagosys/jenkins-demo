@@ -26,9 +26,9 @@ pipeline{
         // 添加第二个stage， 运行源码打包命令
         stage('Package'){
           steps{
-                container("dockerbuild") {
+//                container("dockerbuild") {
                 sh "docker build . -t golang-1.8-alpine:latest"
-	      }
+//	      }
 	  }
         //       container("maven") {
         //           sh "mvn package -B -DskipTests"
