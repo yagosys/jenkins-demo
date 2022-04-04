@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: application-demo
-        image: IMAGE
+        image: openjdk:8-jdk-slim
         ports:
         - containerPort: 8080
 
