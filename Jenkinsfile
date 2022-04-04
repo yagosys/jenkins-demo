@@ -24,17 +24,20 @@ pipeline{
         // }
 
         // 添加第二个stage， 运行源码打包命令
-        // stage('Package'){
-        //   steps{
+        stage('Package'){
+          steps{
+                container("dockerbuild") {
+                sh "docker build . -t golang-1.8-alpine:latest"
+	      }
+	  }
         //       container("maven") {
         //           sh "mvn package -B -DskipTests"
         //       }
-        //   }
-        // }
+         }
 
         stage('Image Scan') {
            steps {
-		fortiCWPScanner block: true, imageName: "httpd:latest"
+		fortiCWPScanner block: true, imageName: "golang-1.8-alpine:latest"
 	   }
 	}
 

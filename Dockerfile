@@ -1,14 +1,14 @@
-FROM registry.cn-beijing.aliyuncs.com/haoshuwei24/openjdk:8-jdk-slim
-ENV PORT 8080
-ENV CLASSPATH /opt/lib
-EXPOSE 8080
+FROM ubuntu:18.04
 
-# copy pom.xml and wildcards to avoid this command failing if there's no target/lib directory
-COPY pom.xml target/lib* /opt/lib/
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && \ 
+    apt-get install -y --no-install-recommends tzdata
+RUN apt-get update && \
+  apt-get -y install apache2 
 
-# NOTE we assume there's only 1 jar in the target dir
-# but at least this means we don't have to guess the name
-# we could do with a better way to know the name - or to always create an app.jar or something
-COPY target/*.jar /opt/app.jar
-WORKDIR /opt
-CMD ["java", "-jar", "app.jar"]
+RUN echo 'Hello  world' > /var/www/html/index.html
+
+
+EXPOSE 80
+
+CMD /root/run_apache.sh
