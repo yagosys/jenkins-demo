@@ -33,7 +33,7 @@ pipeline{
 
         stage('Image Scan') {
            steps {
-		fortiCWPScanner block: true, imageName: "redis:latest"
+		fortiCWPScanner block: true, imageName: "httpd:latest"
 	   }
 	}
 
