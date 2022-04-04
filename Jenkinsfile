@@ -32,7 +32,9 @@ pipeline{
         // }
 
         stage('Image Scan') {
-	fortiCWPScanner block: true, imageName: "redis:latest"
+           steps {
+		fortiCWPScanner block: true, imageName: "redis:latest"
+	   }
 	}
 
         // 添加第三个stage, 运行容器镜像构建和推送命令， 用到了environment中定义的groovy环境变量
