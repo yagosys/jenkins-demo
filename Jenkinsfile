@@ -46,7 +46,8 @@ pipeline{
           steps {
               container('kubectl') {
 //                  sh "sed -i  's#IMAGE#${IMAGE}#g' application-demo.yaml"
-                  sh "kubectl apply -f  application-demo.yaml"
+//                  sh "kubectl apply -f  application-demo.yaml"
+		    sh "kubectl apply -f nginx.yaml"
               }
           }
         }
